@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnFund Meal Card | Campus Food Credits | LearnFund Africa</title>
+    <meta name="description" content="Weekly meal credits for African students. Tap & pay at campus vendors, emergency meal support, cashback rewards, and food agent network.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #4f46e5; --primary-dark: #3730a3; --primary-light: #818cf8; --secondary: #10b981; --accent: #f59e0b; --dark: #1f2937; --light: #f9fafb; --gray: #6b7280; --gray-light: #e5e7eb; --white: #ffffff; --shadow: 0 4px 6px -1px rgba(0,0,0,0.1); --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1); --transition: all 0.3s ease; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--dark); background-color: var(--light); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { height: 50px; width: auto; }
+        .logo-text h1 { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-text p { font-size: 12px; color: var(--gray); }
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 500; transition: var(--transition); }
+        nav a.active { color: var(--primary); font-weight: 600; }
+        .nav-cta { background-color: var(--primary); color: var(--white) !important; padding: 10px 20px; border-radius: 8px; }
+        .nav-cta:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); text-decoration: none; margin-bottom: 30px; font-weight: 500; }
+        .back-link:hover { gap: 12px; }
+        .hero { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 60px 0 80px; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .hero h2 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; color: var(--dark); }
+        .hero p { font-size: 1.2rem; color: var(--gray); margin-bottom: 30px; }
+        .hero-badge { display: inline-block; background-color: var(--accent); color: white; padding: 5px 15px; border-radius: 50px; font-size: 14px; margin-bottom: 20px; }
+        .btn { padding: 14px 30px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; transition: var(--transition); border: none; cursor: pointer; }
+        .btn-primary { background-color: var(--primary); color: var(--white); }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .btn-secondary { background-color: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-secondary:hover { background-color: var(--primary); color: var(--white); transform: translateY(-3px); }
+        .btn-accent { background-color: var(--accent); color: white; }
+        .btn-accent:hover { background-color: #d97706; transform: translateY(-3px); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--white); color: var(--white); }
+        .btn-outline:hover { background-color: var(--white); color: var(--primary); }
+        .features { padding: 80px 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .feature-card { background: var(--white); padding: 30px; border-radius: 15px; text-align: center; box-shadow: var(--shadow); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .feature-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent), #d97706); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 28px; }
+        .section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; }
+        .section-subtitle { color: var(--gray); max-width: 700px; margin: 0 auto; }
+        .card-tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 40px; }
+        .tier-card { background: var(--white); border-radius: 15px; padding: 30px; text-align: center; box-shadow: var(--shadow); position: relative; transition: var(--transition); }
+        .tier-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .tier-card.popular { border: 2px solid var(--accent); }
+        .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; }
+        .tier-price { font-size: 2rem; font-weight: 800; color: var(--primary); margin: 20px 0; }
+        .tier-price small { font-size: 0.8rem; font-weight: normal; }
+        .vendor-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
+        .vendor-item { background: var(--white); padding: 15px 25px; border-radius: 10px; box-shadow: var(--shadow); font-weight: 500; }
+        .map-placeholder { background: linear-gradient(135deg, #f3f4f6, #e5e7eb); border-radius: 20px; padding: 60px; text-align: center; margin-top: 40px; }
+        .rewards { background: linear-gradient(135deg, var(--accent), #d97706); color: white; padding: 40px; border-radius: 20px; text-align: center; margin-top: 40px; }
+        .rewards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; margin-top: 30px; }
+        .rewards-item { background: rgba(255,255,255,0.2); padding: 20px; border-radius: 10px; }
+        .testimonial { background: var(--white); border-radius: 20px; padding: 40px; text-align: center; box-shadow: var(--shadow); max-width: 800px; margin: 0 auto; }
+        .testimonial i { font-size: 40px; color: var(--accent); opacity: 0.5; margin-bottom: 20px; }
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--white); border-radius: 10px; margin-bottom: 15px; overflow: hidden; box-shadow: var(--shadow); }
+        .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--gray); }
+        .faq-item.active .faq-answer { padding: 0 20px 20px; max-height: 200px; }
+        .cta { background: linear-gradient(135deg, var(--accent), #d97706); color: white; text-align: center; padding: 60px 0; }
+        .cta-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+        footer { background-color: var(--dark); color: var(--white); padding: 50px 0 30px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #d1d5db; text-decoration: none; }
+        .footer-col ul li a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: white; padding: 15px 30px; border-radius: 50px; z-index: 2000; transition: transform 0.3s; }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .modal { background: var(--white); border-radius: 15px; width: 90%; max-width: 500px; padding: 40px; position: relative; }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--gray-light); border-radius: 8px; }
+
+        /* Theme toggle */
+        .controls { position: fixed; top: 90px; right: 20px; display: flex; gap: 8px; z-index: 1500; background: var(--white); padding: 6px; border-radius: 60px; box-shadow: var(--shadow-lg); }
+        .ctrl-btn { background: none; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--dark); font-size: 16px; transition: var(--transition); }
+        .ctrl-btn:hover { background: var(--primary); color: white; }
+
+        @media (max-width: 768px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero h2 { font-size: 2rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 250px; text-align: center; }
+            nav ul { gap: 16px; }
+            nav a { font-size: 14px; }
+            .controls { top: 80px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="ctrl-btn" id="theme" title="Toggle Theme" style="position:fixed; bottom:20px; right:20px; width:48px; height:48px; border-radius:50%; background:var(--primary); color:white; border:none; cursor:pointer; z-index:1500; box-shadow:var(--shadow-lg);"><i class="fas fa-moon"></i></button>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/XJZv8RP1/Gemini-Generated-Image-urme86urme86urme.png" alt="LearnFund">
+                <div class="logo-text">
+                    <h1>LearnFund Africa</h1>
+                    <p>Empowering Education. Unlocking Futures.</p>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="pilot.html">Pilot</a></li>
+                    <li><a href="nbc.html">NBC</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container" style="padding-top:30px;">
+        <a href="services.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Services</a>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <span class="hero-badge"><i class="fas fa-utensils"></i> Never Study on an Empty Stomach</span>
+                    <h2>Your Campus Meal Card</h2>
+                    <p>Weekly meal credits accepted at partnered campus vendors across Africa. Tap, eat, and focus on your studies.</p>
+                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <a href="#apply-modal" class="btn btn-primary open-modal">Apply for Meal Card</a>
+                        <a href="#tiers" class="btn btn-secondary">View Card Tiers</a>
+                        <a href="#vendor" class="btn btn-secondary">Become a Food Agent</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/500x400?text=Meal+Card+Sample" style="width:100%; border-radius:20px;" alt="Meal Card">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose LearnFund Meal Card?</h2>
+                <p class="section-subtitle">The smartest way to manage your campus meals</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-calendar-week"></i></div>
+                    <h3>Weekly Allowance</h3>
+                    <p>Get your meal budget every week automatically</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Food Agent Network</h3>
+                    <p>100+ vendors across campuses accept your card</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-ambulance"></i></div>
+                    <h3>Emergency Meal Support</h3>
+                    <p>24/7 emergency meal assistance when you need it</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                    <h3>Cashback Rewards</h3>
+                    <p>Earn cashback on every purchase</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:var(--gray-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple steps to start using your meal card</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:30px; text-align:center;">
+                <div>
+                    <div style="width:60px; height:60px; background:var(--accent); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:24px;">1</div>
+                    <h3>Apply for Card</h3>
+                    <p>Submit your student details online</p>
+                </div>
+                <div>
+                    <div style="width:60px; height:60px; background:var(--accent); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:24px;">2</div>
+                    <h3>Get Digital/Physical Card</h3>
+                    <p>Receive instantly or get physical card delivered</p>
+                </div>
+                <div>
+                    <div style="width:60px; height:60px; background:var(--accent); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:24px;">3</div>
+                    <h3>Load Weekly Budget</h3>
+                    <p>Choose your preferred tier and load funds</p>
+                </div>
+                <div>
+                    <div style="width:60px; height:60px; background:var(--accent); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:24px;">4</div>
+                    <h3>Tap & Pay</h3>
+                    <p>Use at any partner vendor on campus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="tiers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Meal Card Tier</h2>
+                <p class="section-subtitle">Select the plan that fits your weekly meal needs</p>
+            </div>
+            <div class="card-tiers">
+                <div class="tier-card">
+                    <h3>Standard</h3>
+                    <div class="tier-price">TZS 35,000<small>/week</small></div>
+                    <p>5000 Meal cost/day • All vendors • 2% cashback • Priority support</p>
+                    <a href="#apply-modal" class="btn btn-primary open-modal" style="margin-top:20px;">Choose Plan</a>
+                </div>
+                <div class="tier-card">
+                    <h3>Premium</h3>
+                    <div class="tier-price">TZS 50,000<small>/week</small></div>
+                    <p>5 meals/day • Premium vendors • 5% cashback • Emergency support</p>
+                    <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:20px;">Choose Plan</a>
+                </div>
+                <div class="tier-card">
+                    <h3>Family</h3>
+                    <div class="tier-price">TZS 75,000<small>/week</small></div>
+                    <p>Up to 2 students • Family discount • 5% cashback</p>
+                    <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:20px;">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="vendor" style="background:var(--gray-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Vendor Network</h2>
+                <p class="section-subtitle">Find food vendors near your campus</p>
+            </div>
+            <div class="vendor-grid">
+                <div class="vendor-item">University Canteen - UDSM</div>
+                <div class="vendor-item">Campus Cafeteria - ARUSHA</div>
+                <div class="vendor-item">Student Restaurant - MWANZA</div>
+                <div class="vendor-item">Food Court - DAR</div>
+                <div class="vendor-item">Campus Kitchen - MBEYA</div>
+                <div class="vendor-item">Student Cafe - DODOMA</div>
+                <div class="vendor-item">Meal Hub - ZANZIBAR</div>
+                <div class="vendor-item">Food Express - MOROGORO</div>
+                <div class="vendor-item">Campus Bites - TANGA</div>
+            </div>
+            <div class="map-placeholder">
+                <i class="fas fa-map-marker-alt" style="font-size:48px; color:var(--accent); margin-bottom:20px;"></i>
+                <h3>Interactive Vendor Map</h3>
+                <p>Find vendors near your campus location</p>
+                <a href="#" class="btn btn-primary" style="margin-top:20px;">View Full Map</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Become a Food Agent</h2>
+                <p class="section-subtitle">Join our network and grow your business</p>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+                <div>
+                    <h3>Why Partner With LearnFund?</h3>
+                    <ul style="list-style:none;">
+                        <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> 15-20% commission on every transaction</li>
+                        <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> Guaranteed customer base of 10,000+ students</li>
+                        <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> Free marketing and promotion</li>
+                        <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> Instant payments weekly</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top:20px;">Apply as Food Agent</a>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/400x300?text=Food+Vendor" style="width:100%; border-radius:15px;" alt="Food Vendor">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="rewards">
+                <h3><i class="fas fa-gift"></i> Cashback Rewards Program</h3>
+                <p>Earn rewards every time you use your meal card</p>
+                <div class="rewards-grid">
+                    <div class="rewards-item"><i class="fas fa-percent" style="font-size:30px;"></i><h4>2% Cashback</h4><p>On all Standard tier purchases</p></div>
+                    <div class="rewards-item"><i class="fas fa-users" style="font-size:30px;"></i><h4>Referral Bonus</h4><p>Get TZS 10,000 per friend who joins</p></div>
+                    <div class="rewards-item"><i class="fas fa-star" style="font-size:30px;"></i><h4>Loyalty Points</h4><p>Redeem points for free meals</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:var(--gray-light);">
+        <div class="container">
+            <div class="testimonial">
+                <i class="fas fa-quote-left"></i>
+                <p>"The meal card changed my life! I no longer worry about where my next meal will come from. I can focus completely on my studies. The cashback is a nice bonus too!"</p>
+                <div class="testimonial-author"><i class="fas fa-user-graduate"></i> Sarah K.</div>
+                <p style="color:var(--gray);">Arusha Technical College</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How do I get my meal card? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Apply online, get approved within 24 hours, and receive your digital card instantly. Physical cards are delivered to your campus within 3-5 days.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Where can I use the meal card? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">At all partnered vendors on your campus. We have 100+ vendors across Tanzania, with more joining every week.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if I run out of funds? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">You can top up anytime through our app. We also have emergency meal support for urgent situations.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is emergency meal support? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">If you're facing financial hardship, you can request emergency meal credits to ensure you don't go hungry while studying.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use the card at non-campus vendors? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Currently, the card works at campus-affiliated vendors. We're expanding to off-campus locations soon!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Never Study on an Empty Stomach</h2>
+            <p>Get your LearnFund Meal Card today and focus on what matters — your education.</p>
+            <div class="cta-buttons">
+                <a href="#apply-modal" class="btn btn-outline open-modal">Apply for Meal Card</a>
+                <a href="#tiers" class="btn btn-outline">Compare Tiers</a>
+                <a href="tel:+255610222824" class="btn btn-outline">Call for Assistance</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="modal-overlay" id="apply-modal">
+    <div class="modal">
+        <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+        <h3>Apply for Meal Card</h3>
+        <form id="applicationForm">
+            <div class="form-group"><label>Full Name *</label><input type="text" required></div>
+            <div class="form-group"><label>Email Address *</label><input type="email" required></div>
+            <div class="form-group"><label>Phone Number *</label><input type="tel" required></div>
+            <div class="form-group"><label>Institution *</label><input type="text" required></div>
+            <div class="form-group"><label>Select Card Tier *</label>
+                <select>
+                    <option>Basic (TZS 20,000/week)</option>
+                    <option>Standard (TZS 35,000/week)</option>
+                    <option>Premium (TZS 50,000/week)</option>
+                    <option>Family (TZS 75,000/week)</option>
+                </select>
+            </div>
+            <div class="form-group"><label>Preferred Payment Method</label>
+                <select>
+                    <option>M-Pesa</option>
+                    <option>Airtel Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Submit Application</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <img src="https://i.postimg.cc/XJZv8RP1/Gemini-Generated-Image-urme86urme86urme.png" style="height:40px;filter:brightness(0) invert(1);margin-bottom:20px;" alt="LearnFund">
+                <p>Africa's first integrated financial-education ecosystem.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pilot.html">Pilot</a></li>
+                    <li><a href="nbc.html">NBC</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> hello@learnfundafrica.com</li>
+                    <li><i class="fas fa-phone"></i> +255 610 222 824</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LearnFund Africa Ltd. All rights reserved. | Empowering Education. Unlocking Futures.</p>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast">Application submitted successfully!</div>
+
+<script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').onclick = () => item.classList.toggle('active');
+    });
+
+    // Modal
+    const modal = document.getElementById('apply-modal');
+    const modalClose = document.getElementById('modalClose');
+    const toast = document.getElementById('toast');
+    function showToast() { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+    document.querySelectorAll('.open-modal').forEach(btn => {
+        btn.onclick = (e) => { e.preventDefault(); modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; };
+    });
+    modalClose.onclick = () => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; };
+    modal.onclick = (e) => { if (e.target === modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; } };
+    document.getElementById('applicationForm').onsubmit = (e) => {
+        e.preventDefault(); showToast();
+        modal.style.display = 'none'; document.body.style.overflow = 'auto'; e.target.reset();
+    };
+
+    // ========== THEME TOGGLE ==========
+    let currentTheme = localStorage.getItem('learnfund-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    const themeBtn = document.getElementById('theme');
+    if (themeBtn) {
+        themeBtn.innerHTML = currentTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        themeBtn.onclick = () => {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeBtn.innerHTML = currentTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('learnfund-theme', currentTheme);
+        };
+    }
+</script>
+</body>
+</html>

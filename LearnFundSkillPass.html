@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnFund SkillPass | Upskilling & Certification | LearnFund Africa</title>
+    <meta name="description" content="Upskilling courses with pay-after-placement. Coding, design, marketing, and more. Industry-recognized certifications and job matching service.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #10b981; --primary-dark: #059669; --primary-light: #34d399; --secondary: #4f46e5; --accent: #f59e0b; --dark: #1f2937; --light: #f9fafb; --gray: #6b7280; --gray-light: #e5e7eb; --white: #ffffff; --shadow: 0 4px 6px -1px rgba(0,0,0,0.1); --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1); --transition: all 0.3s ease; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--dark); background-color: var(--light); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { height: 50px; width: auto; }
+        .logo-text h1 { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-text p { font-size: 12px; color: var(--gray); }
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 500; transition: var(--transition); }
+        nav a.active { color: var(--primary); font-weight: 600; }
+        .nav-cta { background-color: var(--primary); color: var(--white) !important; padding: 10px 20px; border-radius: 8px; }
+        .nav-cta:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); text-decoration: none; margin-bottom: 30px; }
+        .back-link:hover { gap: 12px; }
+        .hero { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 60px 0 80px; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .hero h2 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; }
+        .hero-badge { display: inline-block; background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; font-size: 14px; margin-bottom: 20px; }
+        .btn { padding: 14px 30px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; transition: var(--transition); cursor: pointer; border: none; }
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-3px); }
+        .btn-secondary { background-color: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-secondary:hover { background-color: var(--primary); color: white; }
+        .btn-outline { background-color: transparent; border: 2px solid var(--white); color: white; }
+        .btn-outline:hover { background-color: var(--white); color: var(--primary); }
+        .section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 15px; }
+        .section-subtitle { color: var(--gray); max-width: 700px; margin: 0 auto; }
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+        .course-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); }
+        .course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .course-img { height: 160px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; }
+        .course-info { padding: 20px; }
+        .course-price { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
+        .course-badge { display: inline-block; background: var(--primary-light); color: white; padding: 3px 10px; border-radius: 20px; font-size: 12px; margin-bottom: 10px; }
+        .installment { color: var(--gray); font-size: 14px; margin-bottom: 10px; }
+        .pay-after { background: linear-gradient(135deg, var(--secondary), var(--primary)); color: white; padding: 40px; border-radius: 20px; text-align: center; margin-top: 40px; }
+        .job-guarantee { background: var(--gray-light); border-radius: 20px; padding: 40px; margin-top: 40px; }
+        .mentor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px; }
+        .mentor-card { background: var(--white); padding: 20px; border-radius: 10px; text-align: center; box-shadow: var(--shadow); }
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--white); border-radius: 10px; margin-bottom: 15px; overflow: hidden; box-shadow: var(--shadow); }
+        .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s; color: var(--gray); }
+        .faq-item.active .faq-answer { padding: 0 20px 20px; max-height: 200px; }
+        .cta { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; text-align: center; padding: 60px 0; }
+        footer { background-color: var(--dark); color: var(--white); padding: 50px 0 30px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #d1d5db; text-decoration: none; }
+        .footer-col ul li a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--primary); color: white; padding: 15px 30px; border-radius: 50px; z-index: 2000; transition: transform 0.3s; }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .modal { background: var(--white); border-radius: 15px; width: 90%; max-width: 500px; padding: 40px; position: relative; }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--gray-light); border-radius: 8px; }
+        @media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; text-align: center; } .hero h2 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+
+<button class="ctrl-btn" id="theme" title="Toggle Theme" style="position:fixed; bottom:20px; right:20px; width:48px; height:48px; border-radius:50%; background:var(--primary); color:white; border:none; cursor:pointer; z-index:1500; box-shadow:var(--shadow-lg);"><i class="fas fa-moon"></i></button>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/XJZv8RP1/Gemini-Generated-Image-urme86urme86urme.png" alt="LearnFund">
+                <div class="logo-text">
+                    <h1>LearnFund Africa</h1>
+                    <p>Empowering Education. Unlocking Futures.</p>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="pilot.html">Pilot</a></li>
+                    <li><a href="nbc.html">NBC</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container" style="padding-top:30px;">
+        <a href="services.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Services</a>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <span class="hero-badge"><i class="fas fa-graduation-cap"></i> Learn. Earn. Succeed.</span>
+                    <h2>Learn Skills. Get Hired. Pay Later.</h2>
+                    <p>Industry-recognized certifications with pay-after-placement options. No upfront payment required.</p>
+                    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                        <a href="#apply-modal" class="btn btn-primary open-modal">Browse Courses</a>
+                        <a href="#pay-after" class="btn btn-secondary">Pay-After-Placement</a>
+                        <a href="#mentors" class="btn btn-secondary">Meet Our Mentors</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/500x400?text=SkillPass+Learning" style="width:100%; border-radius:20px;" alt="SkillPass">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Courses</h2>
+                <p class="section-subtitle">In-demand skills for the modern workplace</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-img"><i class="fab fa-python"></i></div>
+                    <div class="course-info">
+                        <span class="course-badge">Tech</span>
+                        <h3>Python Programming</h3>
+                        <p>Master Python from basics to advanced. Build real-world projects.</p>
+                        <div class="course-price">TZS 250,000</div>
+                        <div class="installment">or pay-after-placement: TZS 350,000</div>
+                        <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:10px;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img"><i class="fas fa-chart-line"></i></div>
+                    <div class="course-info">
+                        <span class="course-badge">Business</span>
+                        <h3>Digital Marketing</h3>
+                        <p>SEO, Social Media, Google Ads, Analytics certification.</p>
+                        <div class="course-price">TZS 200,000</div>
+                        <div class="installment">or pay-after-placement: TZS 280,000</div>
+                        <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:10px;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img"><i class="fas fa-paintbrush"></i></div>
+                    <div class="course-info">
+                        <span class="course-badge">Design</span>
+                        <h3>UI/UX Design</h3>
+                        <p>Figma, Adobe XD, user research, prototyping.</p>
+                        <div class="course-price">TZS 220,000</div>
+                        <div class="installment">or pay-after-placement: TZS 310,000</div>
+                        <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:10px;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img"><i class="fas fa-database"></i></div>
+                    <div class="course-info">
+                        <span class="course-badge">Tech</span>
+                        <h3>Data Science</h3>
+                        <p>Pandas, NumPy, Machine Learning, SQL.</p>
+                        <div class="course-price">TZS 350,000</div>
+                        <div class="installment">or pay-after-placement: TZS 490,000</div>
+                        <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:10px;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img"><i class="fas fa-code"></i></div>
+                    <div class="course-info">
+                        <span class="course-badge">Tech</span>
+                        <h3>Full-Stack Web Dev</h3>
+                        <p>HTML, CSS, JavaScript, React, Node.js, MongoDB.</p>
+                        <div class="course-price">TZS 400,000</div>
+                        <div class="installment">or pay-after-placement: TZS 560,000</div>
+                        <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:10px;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img"><i class="fas fa-chart-simple"></i></div>
+                    <div class="course-info">
+                        <span class="course-badge">Business</span>
+                        <h3>Financial Literacy</h3>
+                        <p>Budgeting, investing, credit management, entrepreneurship.</p>
+                        <div class="course-price">TZS 100,000</div>
+                        <div class="installment">or pay-after-placement: TZS 140,000</div>
+                        <a href="#apply-modal" class="btn btn-secondary open-modal" style="margin-top:10px;">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:var(--gray-light);" id="pay-after">
+        <div class="container">
+            <div class="pay-after">
+                <h2><i class="fas fa-hand-holding-usd"></i> Pay-After-Placement Program</h2>
+                <p>Take courses now, pay only when you get hired. No risk, only opportunity.</p>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:30px; margin-top:40px;">
+                    <div>
+                        <i class="fas fa-file-signature" style="font-size:48px;"></i>
+                        <h3>1. Enroll Free</h3>
+                        <p>Start your course with zero upfront payment</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-check-circle" style="font-size:48px;"></i>
+                        <h3>2. Complete Successfully</h3>
+                        <p>Finish the course and get certified</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-briefcase" style="font-size:48px;"></i>
+                        <h3>3. Get Hired</h3>
+                        <p>We help you find a job in your field</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-money-bill-wave" style="font-size:48px;"></i>
+                        <h3>4. Pay from Salary</h3>
+                        <p>Pay tuition from your first paycheck</p>
+                    </div>
+                </div>
+                <a href="#apply-modal" class="btn btn-primary open-modal" style="background:white; color:var(--primary); margin-top:20px;">Apply for Pay-After-Placement</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="job-guarantee">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+                    <div>
+                        <h2><i class="fas fa-medal"></i> Job Guarantee</h2>
+                        <p>We're so confident in our training that we offer a job guarantee. If you don't get placed within 6 months of completing your course, you pay nothing.</p>
+                        <ul style="margin-top:20px; list-style:none;">
+                            <li><i class="fas fa-check-circle" style="color:var(--primary);"></i> 80% placement rate within 3 months</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary);"></i> 100+ hiring partners</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary);"></i> Resume & interview prep included</li>
+                        </ul>
+                    </div>
+                    <div style="text-align:center;">
+                        <i class="fas fa-chart-line" style="font-size:80px; color:var(--primary);"></i>
+                        <h3>Average Starting Salary</h3>
+                        <p class="course-price">TZS 450,000 - 1,200,000/month</p>
+                        <p>after course completion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:var(--gray-light);" id="mentors">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Mentors</h2>
+                <p class="section-subtitle">Learn from industry experts</p>
+            </div>
+            <div class="mentor-grid">
+                <div class="mentor-card"><i class="fas fa-user-circle" style="font-size:64px; color:var(--primary);"></i><h3>Sarah J.</h3><p>Senior Developer, Microsoft</p><small>Python, Data Science</small></div>
+                <div class="mentor-card"><i class="fas fa-user-circle" style="font-size:64px; color:var(--primary);"></i><h3>James M.</h3><p>Digital Marketing Lead, Safaricom</p><small>Digital Marketing, SEO</small></div>
+                <div class="mentor-card"><i class="fas fa-user-circle" style="font-size:64px; color:var(--primary);"></i><h3>Grace A.</h3><p>Product Designer, Andela</p><small>UI/UX, Figma</small></div>
+                <div class="mentor-card"><i class="fas fa-user-circle" style="font-size:64px; color:var(--primary);"></i><h3>Michael O.</h3><p>Data Scientist, Jumia</p><small>Machine Learning, SQL</small></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div style="background:var(--white); border-radius:20px; padding:40px; text-align:center;">
+                <i class="fas fa-quote-left" style="font-size:40px; color:var(--primary); opacity:0.5;"></i>
+                <p>"I took the Full-Stack Web Dev course and got hired at a tech company 2 months after graduation. SkillPass changed my career!"</p>
+                <div style="font-weight:600; color:var(--primary); margin-top:10px;"><strong>John O.</strong> — Web Developer, NMB Bank</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How does Pay-After-Placement work? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Enroll for free, complete the course, get certified, and only pay tuition once you secure a job in your field.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if I don't get a job? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">If you complete the course and don't get placed within 6 months, you pay nothing. It's risk-free.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Are certifications recognized? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Yes! Our certifications are industry-recognized and valued by employers across Africa.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How long are the courses? <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer">Courses range from 4 to 12 weeks, depending on the program and depth of content.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Level Up Your Career?</h2>
+            <p>Enroll in SkillPass today and pay only when you succeed</p>
+            <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
+                <a href="#apply-modal" class="btn btn-outline open-modal">Browse Courses</a>
+                <a href="#pay-after" class="btn btn-outline">Learn About Pay-After-Placement</a>
+                <a href="#" class="btn btn-outline">Hire Our Graduates</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="modal-overlay" id="apply-modal">
+    <div class="modal">
+        <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+        <h3>Enroll in SkillPass</h3>
+        <form id="applicationForm">
+            <div class="form-group"><label>Full Name *</label><input type="text" required></div>
+            <div class="form-group"><label>Email *</label><input type="email" required></div>
+            <div class="form-group"><label>Phone *</label><input type="tel" required></div>
+            <div class="form-group"><label>Select Course *</label>
+                <select>
+                    <option>Python Programming</option>
+                    <option>Digital Marketing</option>
+                    <option>UI/UX Design</option>
+                    <option>Data Science</option>
+                    <option>Full-Stack Web Dev</option>
+                    <option>Financial Literacy</option>
+                </select>
+            </div>
+            <div class="form-group"><label>Payment Option *</label>
+                <select>
+                    <option>Pay Upfront</option>
+                    <option>Pay-After-Placement</option>
+                    <option>Installment Plan</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%">Enroll Now</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <img src="https://i.postimg.cc/XJZv8RP1/Gemini-Generated-Image-urme86urme86urme.png" style="height:40px;filter:brightness(0) invert(1);margin-bottom:20px;" alt="LearnFund">
+                <p>Africa's first integrated financial-education ecosystem.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pilot.html">Pilot</a></li>
+                    <li><a href="nbc.html">NBC</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> skillpass@learnfundafrica.com</li>
+                    <li><i class="fas fa-phone"></i> +255 610 222 824</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LearnFund Africa Ltd. | Skill Your Way to Success</p>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast">Enrollment submitted! We'll contact you within 24 hours.</div>
+
+<script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').onclick = () => item.classList.toggle('active');
+    });
+
+    const modal = document.getElementById('apply-modal');
+    const modalClose = document.getElementById('modalClose');
+    const toast = document.getElementById('toast');
+    function showToast() { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+    document.querySelectorAll('.open-modal').forEach(btn => {
+        btn.onclick = (e) => { e.preventDefault(); modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; };
+    });
+    modalClose.onclick = () => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; };
+    modal.onclick = (e) => { if (e.target === modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; } };
+    document.getElementById('applicationForm').onsubmit = (e) => {
+        e.preventDefault(); showToast();
+        modal.style.display = 'none'; document.body.style.overflow = 'auto'; e.target.reset();
+    };
+
+    // ========== THEME TOGGLE ==========
+    let currentTheme = localStorage.getItem('learnfund-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    const themeBtn = document.getElementById('theme');
+    if (themeBtn) {
+        themeBtn.innerHTML = currentTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        themeBtn.onclick = () => {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeBtn.innerHTML = currentTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('learnfund-theme', currentTheme);
+        };
+    }
+</script>
+</body>
+</html>

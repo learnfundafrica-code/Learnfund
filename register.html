@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Interest | LearnFund Africa</title>
+    <meta name="description" content="Register your interest in the LearnFund education-support pilot. Students and parents/guardians from accepted institutions are welcome.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Registration page — extra styles */
+        .reg-hero {
+            padding: 140px 0 50px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #fefefe 100%);
+            text-align: center;
+        }
+        [data-theme="dark"] .reg-hero {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+        .reg-hero h2 {
+            font-size: 2.6rem; font-weight: 800; color: var(--primary);
+            letter-spacing: -0.02em; margin-bottom: 12px;
+        }
+        .reg-hero p {
+            color: var(--gray); max-width: 620px; margin: 0 auto;
+        }
+
+        .reg-form-wrap {
+            background: var(--white); border-radius: var(--radius);
+            box-shadow: var(--shadow-lg); border: 1px solid var(--gray-light);
+            padding: 44px; max-width: 860px; margin: 0 auto;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .form-section:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+        .form-section-title {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 1.15rem; font-weight: 700;
+            color: var(--primary); margin-bottom: 6px;
+        }
+        .form-section-title .num {
+            width: 32px; height: 32px; border-radius: 50%;
+            background: var(--primary); color: white;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700; flex-shrink: 0;
+        }
+        .form-section-sub {
+            color: var(--gray); font-size: 13.5px;
+            margin-bottom: 20px; margin-left: 42px;
+        }
+
+        .form-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+        }
+        .form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+        .form-row .full { grid-column: 1 / -1; }
+
+        .reg-form-wrap .form-group { margin-bottom: 18px; }
+        .reg-form-wrap .form-group label {
+            display: block; margin-bottom: 6px; font-weight: 600;
+            font-size: 13px; color: var(--dark);
+        }
+        .reg-form-wrap .form-group label .req { color: #dc2626; margin-left: 3px; }
+        .reg-form-wrap .form-group input,
+        .reg-form-wrap .form-group select,
+        .reg-form-wrap .form-group textarea {
+            width: 100%; padding: 11px 14px;
+            border: 1px solid var(--gray-light); border-radius: 8px;
+            font-family: inherit; background: var(--white);
+            color: var(--dark); font-size: 14px;
+            transition: border-color .2s ease;
+        }
+        .reg-form-wrap .form-group input:focus,
+        .reg-form-wrap .form-group select:focus,
+        .reg-form-wrap .form-group textarea:focus {
+            outline: none; border-color: var(--secondary);
+        }
+        .reg-form-wrap .form-group input:invalid:not(:placeholder-shown) {
+            border-color: #fca5a5;
+        }
+
+        .radio-group, .check-group {
+            display: flex; gap: 18px; flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .radio-group label, .check-group label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-weight: 500; font-size: 14px; cursor: pointer;
+            color: var(--dark);
+        }
+        .radio-group input, .check-group input {
+            width: auto; accent-color: var(--primary);
+        }
+
+        .checkbox-line {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 14px; font-size: 14px; color: var(--gray);
+        }
+        .checkbox-line input { margin-top: 4px; accent-color: var(--primary); }
+        .checkbox-line a { color: var(--secondary); text-decoration: none; }
+        .checkbox-line a:hover { text-decoration: underline; }
+
+        .conditional { display: none; }
+        .conditional.show { display: block; }
+
+        .form-actions {
+            display: flex; gap: 14px; flex-wrap: wrap;
+            margin-top: 28px; padding-top: 24px;
+            border-top: 1px solid var(--gray-light);
+        }
+        .form-actions .btn { flex: 1 1 auto; text-align: center; }
+
+        .form-note {
+            font-size: 12.5px; color: var(--gray);
+            margin-top: 16px; text-align: center;
+        }
+
+        @media(max-width: 768px) {
+            .reg-form-wrap { padding: 28px 22px; }
+            .reg-hero h2 { font-size: 1.9rem; }
+            .form-row, .form-row.triple { grid-template-columns: 1fr; }
+            .form-actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="ctrl-btn" id="theme" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo" style="text-decoration:none;">
+                    <img src="https://i.postimg.cc/XJZv8RP1/Gemini-Generated-Image-urme86urme86urme.png" alt="LearnFund Logo">
+                    <div class="logo-text">
+                        <h1>LearnFund</h1>
+                        <p>Education Financial Access</p>
+                    </div>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pilot.html">Pilot</a></li>
+                        <li><a href="nbc.html">NBC</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pilot.html">Pilot</a></li>
+            <li><a href="nbc.html">NBC</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO -->
+    <section class="reg-hero">
+        <div class="container" data-aos="fade-up">
+            <div class="pilot-badge" style="margin-left:auto; margin-right:auto;">
+                <i class="fas fa-clipboard-check"></i> Proposed UDSM UCC Pilot
+            </div>
+            <h2>Register Your Interest</h2>
+            <p>
+                Share a few details and help us understand your education-related needs.
+                Submission does not guarantee financial support or approval.
+            </p>
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="section" style="padding-top: 20px;">
+        <div class="container">
+            <form class="reg-form-wrap" id="registerForm" novalidate data-aos="fade-up">
+
+                <!-- 1. APPLICANT TYPE -->
+                <div class="form-section">
+                    <div class="form-section-title"><span class="num">1</span> Applicant Type</div>
+                    <p class="form-section-sub">Tell us who is registering today.</p>
+
+                    <div class="form-group">
+                        <label>I am registering as <span class="req">*</span></label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="applicantType" value="student" checked> Student</label>
+                            <label><input type="radio" name="applicantType" value="parent"> Parent / Guardian</label>
+                            <label><input type="radio" name="applicantType" value="other"> Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. PERSONAL INFORMATION -->
+                <div class="form-section">
+                    <div class="form-section-title"><span class="num">2</span> Personal Information</div>
+                    <p class="form-section-sub">Basic details so we can contact you.</p>
+
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label>Full Name <span class="req">*</span></label>
+                            <input type="text" name="fullName" placeholder="First name and surname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" name="dob">
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select name="gender">
+                                <option value="">Select</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                                <option>Prefer not to say</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>National ID / NIDA (optional)</label>
+                            <input type="text" name="nida" placeholder="NIDA number">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number <span class="req">*</span></label>
+                            <input type="tel" name="phone" placeholder="+255 7XX XXX XXX" pattern="[+0-9\s\-()]{7,20}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="Optional">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. INSTITUTION & STUDY -->
+                <div class="form-section">
+                    <div class="form-section-title"><span class="num">3</span> Institution &amp; Study</div>
+                    <p class="form-section-sub">Where are you (or the student) studying?</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Institution <span class="req">*</span></label>
+                            <select name="institution" required>
+                                <option value="">Select institution</option>
+                                <option>UDSM — University Computing Centre (UCC)</option>
+                                <option>College of Business Education (CBE)</option>
+                                <option>Other institution</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Registration / Student Number <span class="req">*</span></label>
+                            <input type="text" name="studentNumber" placeholder="Enter student number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-group">
+                            <label>Programme / Course</label>
+                            <input type="text" name="programme" placeholder="e.g. BSc Computer Science">
+                        </div>
+                        <div class="form-group">
+                            <label>Year of Study</label>
+                            <select name="yearOfStudy">
+                                <option value="">Select year</option>
+                                <option>Year 1</option>
+                                <option>Year 2</option>
+                                <option>Year 3</option>
+                                <option>Year 4</option>
+                                <option>Year 5+</option>
+                                <option>Postgraduate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Expected Completion</label>
+                            <input type="text" name="expectedCompletion" placeholder="e.g. 2027">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. EDUCATION-RELATED NEED -->
+                <div class="form-section">
+                    <div class="form-section-title"><span class="num">4</span> Education-Related Need</div>
+                    <p class="form-section-sub">What kind of support are you looking for?</p>
+
+                    <div class="form-group">
+                        <label>Type of Need <span class="req">*</span> <span style="font-weight:400; color:var(--gray);">(select all that apply)</span></label>
+                        <div class="check-group">
+                            <label><input type="checkbox" name="need" value="tuition"> Tuition &amp; Fees</label>
+                            <label><input type="checkbox" name="need" value="food"> Food &amp; Meals</label>
+                            <label><input type="checkbox" name="need" value="transport"> Transport</label>
+                            <label><input type="checkbox" name="need" value="materials"> Learning Materials &amp; Devices</label>
+                            <label><input type="checkbox" name="need" value="accommodation"> Accommodation</label>
+                            <label><input type="checkbox" name="need" value="emergency"> Emergency Needs</label>
+                            <label><input type="checkbox" name="need" value="credit"> Student Credit Score</label>
+                            <label><input type="checkbox" name="need" value="skillpass"> SkillPass (Upskilling)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-group">
+                            <label>Approximate Amount Needed (TZS)</label>
+                            <input type="number" name="amount" placeholder="e.g. 500000" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Urgency</label>
+                            <select name="urgency">
+                                <option value="">Select urgency</option>
+                                <option>Immediate (within 7 days)</option>
+                                <option>This month</option>
+                                <option>This semester</option>
+                                <option>Planning ahead</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Contact Method</label>
+                            <select name="contactPref">
+                                <option>Phone call</option>
+                                <option>SMS</option>
+                                <option>WhatsApp</option>
+                                <option>Email</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Briefly describe the challenge</label>
+                        <textarea name="description" rows="4" placeholder="Tell us what you're trying to solve..."></textarea>
+                    </div>
+                </div>
+
+                <!-- 5. FINANCIAL / ACCOUNT -->
+                <div class="form-section">
+                    <div class="form-section-title"><span class="num">5</span> Financial &amp; Account</div>
+                    <p class="form-section-sub">A relatable account can smooth the journey. This is not a requirement.</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Do you have an NBC account?</label>
+                            <select name="hasNbc">
+                                <option value="">Select</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>Not sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Money Number (M-Pesa / Airtel Money)</label>
+                            <input type="tel" name="mobileMoney" placeholder="If different from phone above">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. PARENT / GUARDIAN (conditional) -->
+                <div class="form-section conditional" id="guardianSection">
+                    <div class="form-section-title"><span class="num">6</span> Parent / Guardian Details</div>
+                    <p class="form-section-sub">Since you are registering on behalf of a student, please share your details.</p>
+
+                    <div class="form-row triple">
+                        <div class="form-group">
+                            <label>Guardian Full Name</label>
+                            <input type="text" name="guardianName" placeholder="Full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Relationship</label>
+                            <select name="guardianRelation">
+                                <option value="">Select</option>
+                                <option>Mother</option>
+                                <option>Father</option>
+                                <option>Guardian</option>
+                                <option>Sibling</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Guardian Phone</label>
+                            <input type="tel" name="guardianPhone" placeholder="+255 ...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. CONSENT -->
+                <div class="form-section">
+                    <div class="form-section-title"><span class="num">7</span> Consent</div>
+                    <p class="form-section-sub">Please review and confirm before submitting.</p>
+
+                    <label class="checkbox-line">
+                        <input type="checkbox" name="consentAccurate" required>
+                        <span>I confirm that the information provided is accurate to the best of my knowledge. <span class="req">*</span></span>
+                    </label>
+
+                    <label class="checkbox-line">
+                        <input type="checkbox" name="consentVerify" required>
+                        <span>I agree to LearnFund and its partners verifying the details shared above as part of the eligibility process. <span class="req">*</span></span>
+                    </label>
+
+                    <label class="checkbox-line">
+                        <input type="checkbox" name="consentTerms" required>
+                        <span>I have read and accept the <a href="#" onclick="return false;">Terms of Use</a> and <a href="#" onclick="return false;">Privacy Policy</a>. <span class="req">*</span></span>
+                    </label>
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Registration
+                    </button>
+                    <a href="index.html" class="btn btn-secondary">Cancel</a>
+                </div>
+
+                <p class="form-note">
+                    <i class="fas fa-info-circle" style="color: var(--secondary);"></i>
+                    Submission does not guarantee financial support or approval. All services are subject to eligibility and verification.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <img src="https://i.postimg.cc/XJZv8RP1/Gemini-Generated-Image-urme86urme86urme.png" alt="LearnFund" style="height:36px; margin-bottom:16px; filter: brightness(0) invert(1);">
+                    <p style="font-weight: 500; color: #ffffff; margin-bottom: 8px;">Education Support. Connected to the Right Financial Ecosystem.</p>
+                    <p style="font-size: 13px; color: #8a9aa8;">Proposed UDSM UCC Pilot</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Navigate</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pilot.html">Pilot</a></li>
+                        <li><a href="nbc.html">NBC</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p style="margin-bottom:10px;"><i class="fas fa-envelope"></i> hello@learnfundafrica.com</p>
+                    <p style="margin-bottom:10px;"><i class="fas fa-phone"></i> +255 610 222 824</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LearnFund. Concept Proposal — Subject to stakeholder review and approval.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">Success!</div>
+    <button class="scroll-to-top" id="scrollToTop"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        /* =========================
+           REGISTER PAGE — conditional logic
+        ========================== */
+        document.querySelectorAll('input[name="applicantType"]').forEach(r => {
+            r.addEventListener('change', () => {
+                const isParent = document.querySelector('input[name="applicantType"]:checked').value === 'parent';
+                const sec = document.getElementById('guardianSection');
+                sec.classList.toggle('show', isParent);
+            });
+        });
+
+        /* =========================
+           FORM SUBMIT (no backend)
+        ========================== */
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Simple custom check — required fields only
+            const required = this.querySelectorAll('[required]');
+            let ok = true;
+            required.forEach(f => {
+                if (f.type === 'checkbox' && !f.checked) { ok = false; f.closest('.checkbox-line').style.color = '#dc2626'; }
+                if (f.type !== 'checkbox' && !f.value.trim()) { ok = false; f.style.borderColor = '#fca5a5'; }
+            });
+
+            if (!ok) {
+                window.showToast && window.showToast('Please complete all required fields.');
+                return;
+            }
+
+            // No backend — show confirmation
+            window.showToast && window.showToast('Thank you — your registration has been recorded.');
+            this.reset();
+            document.getElementById('guardianSection').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
